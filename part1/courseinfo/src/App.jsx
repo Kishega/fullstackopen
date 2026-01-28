@@ -4,7 +4,9 @@ const Title = ( {title} ) => <h1>{title}</h1>
 
 const Button = (props) => <button onClick={props.onClick}>{props.text}</button>
 
-const Stat = ( {text, num}) => <p>{text} {num}</p>
+const Stat = ( {text, num} ) => <p>{text} {num}</p>
+
+const Percentage = ( {text, num} ) => <p>{text} {num} %</p>
 
 const App = () => {
   // save clicks of each button to its own state
@@ -24,6 +26,9 @@ const App = () => {
       <Stat text="good" num={good} />
       <Stat text="neutral" num={neutral} />
       <Stat text="bad" num={bad} />
+      <Stat text="all" num={good + neutral + bad} />
+      <Stat text="average" num={(good - bad) / (good + neutral + bad)} />
+      <Percentage text="positive" num={good * 100 / (good + neutral + bad)} />
     </div>
   )
 }
