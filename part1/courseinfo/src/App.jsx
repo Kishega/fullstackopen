@@ -5,14 +5,22 @@ const Title = ( {title} ) => <h1>{title}</h1>
 const Button = (props) => <button onClick={props.onClick}>{props.text}</button>
 
 const Statistics = (props) => {
+  const all = props.good + props.neutral + props.bad
+
+  if (all === 0) {
+    return (
+      <p>No feedback given</p>
+    )
+  }
+  
   return (
     <>
     <p>good {props.good}</p>
     <p>neutral {props.neutral}</p>
     <p>bad {props.bad}</p>
-    <p>all {props.good + props.neutral + props.bad}</p>
-    <p>average {(props.good - props.bad) / (props.good + props.neutral + props.bad)}</p>
-    <p>positive {props.good * 100 / (props.good + props.neutral + props.bad)}</p>
+    <p>all {all}</p>
+    <p>average {(props.good - props.bad) / (all)}</p>
+    <p>positive {props.good * 100 / (all)}</p>
     </>
   )
 }
