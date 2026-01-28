@@ -4,6 +4,8 @@ const Title = ( {title} ) => <h1>{title}</h1>
 
 const Button = (props) => <button onClick={props.onClick}>{props.text}</button>
 
+const StatisticLine = ( {cat, value} ) => <p>{cat} {value}</p>
+ 
 const Statistics = (props) => {
   const all = props.good + props.neutral + props.bad
 
@@ -15,12 +17,12 @@ const Statistics = (props) => {
   
   return (
     <>
-    <p>good {props.good}</p>
-    <p>neutral {props.neutral}</p>
-    <p>bad {props.bad}</p>
-    <p>all {all}</p>
-    <p>average {(props.good - props.bad) / (all)}</p>
-    <p>positive {props.good * 100 / (all)}</p>
+    <StatisticLine cat='good' value={props.good} />
+    <StatisticLine cat='neutral' value={props.neutral} />
+    <StatisticLine cat='bad' value={props.bad} />
+    <StatisticLine cat='all' value={all} />
+    <StatisticLine cat='average' value={(props.good - props.bad) / all} />
+    <StatisticLine cat='positive' value={props.good * 100 / all + ' %'} />
     </>
   )
 }
