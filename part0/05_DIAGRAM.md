@@ -25,4 +25,4 @@ sequenceDiagram
     server-->>browser: the json file
     deactivate server
 
-    Note right of browser: Browser renders notes
+    Note right of browser: Note over Browser: Browser renders notes
