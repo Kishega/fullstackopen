@@ -36,12 +36,31 @@ const App = () => {
     setState(newState)
   }
 
+  const mostVotes = () => {
+    let max = 0
+    let res = 0
+    for (let i=0; i<state.votes.length; i++) {
+      if (state.votes[i] > max) {
+        res=i
+        max=state.votes[i]
+      }
+    }
+    
+    return res
+  }
+
+  const most=mostVotes()
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[state.selected]}</p>
       <p>has {state.votes[state.selected]} votes</p>
       <Button handleClick={handleVote} text="vote" />
       <Button handleClick={handleNext} text="next anecdote" />
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[most]}</p>
+      <p>has {state.votes[most]} votes</p>
     </div>
   )
 }
